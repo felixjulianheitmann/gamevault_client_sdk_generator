@@ -1,4 +1,6 @@
 rm -r sdk/*
+rm -r sdk/.dart_tool
+rm -r sdk/.openapi-generator
 
 RESPONSE=$(curl -X POST \
     -H "content-type:application/json" \
