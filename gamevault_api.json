@@ -3087,7 +3087,9 @@
                         "type": "array",
                         "items": {
                             "type": "array",
-                            "items": "string"
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     },
                     "searchBy": {
