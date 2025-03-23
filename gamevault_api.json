@@ -3086,7 +3086,8 @@
                         "description": "sorting that was applied by the query",
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "array",
+                            "items": "string"
                         }
                     },
                     "searchBy": {
