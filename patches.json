@@ -1,0 +1,19 @@
+{
+    "sdk/lib/model/gamevault_user.dart": {
+        "role: GamevaultUserRoleEnum.parse('${json[r'role']}'),": "role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,",
+        "static const n0 = GamevaultUserRoleEnum._('0');": "static const n0 = GamevaultUserRoleEnum._(0);",
+        "static const n1 = GamevaultUserRoleEnum._('1');": "static const n1 = GamevaultUserRoleEnum._(1);",
+        "static const n2 = GamevaultUserRoleEnum._('2');": "static const n2 = GamevaultUserRoleEnum._(2);",
+        "static const n3 = GamevaultUserRoleEnum._('3');": "static const n3 = GamevaultUserRoleEnum._(3);"
+    },
+    "sdk/lib/model/update_user_dto.dart": {
+        "role: UpdateUserDtoRoleEnum.parse('${json[r'role']}'),": "role: UpdateUserDtoRoleEnum.fromJson(json[r'role'])!,",
+        "static const n0 = UpdateUserDtoRoleEnum._('0');": "static const n0 = UpdateUserDtoRoleEnum._(0);",
+        "static const n1 = UpdateUserDtoRoleEnum._('1');": "static const n1 = UpdateUserDtoRoleEnum._(1);",
+        "static const n2 = UpdateUserDtoRoleEnum._('2');": "static const n2 = UpdateUserDtoRoleEnum._(2);",
+        "static const n3 = UpdateUserDtoRoleEnum._('3');": "static const n3 = UpdateUserDtoRoleEnum._(3);"
+    },
+    "sdk/lib/model/health.dart": {
+        "uptime: num.parse('${json[r'uptime']}'),": "uptime: json[r'uptime'] != null ? num.parse('${json[r'uptime']}') : null,"
+    }
+}
