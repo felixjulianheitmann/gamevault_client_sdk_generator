@@ -2952,9 +2952,7 @@
                     "entity_version",
                     "username",
                     "socket_secret",
-                    "email",
                     "first_name",
-                    "last_name",
                     "activated",
                     "role",
                     "bookmarked_games"
