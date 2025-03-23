@@ -1,5 +1,4 @@
 rm -r sdk/*
-rm -r sdk/.*
 
 RESPONSE=$(curl -X POST \
     -H "content-type:application/json" \
