@@ -1,9 +1,8 @@
-// Openapi Generator last run: : 2025-03-23T14:57:14.932328
+// Openapi Generator last run: : 2025-03-23T15:10:16.838991
 import 'package:openapi_generator_annotations/openapi_generator_annotations.dart';
 
 @Openapi(
   additionalProperties: AdditionalProperties(
-    sourceFolder: 'gamevault_api',
       pubName: 'gamevault_client_sdk',
       pubVersion: '0.0.1',
       pubHomepage:
