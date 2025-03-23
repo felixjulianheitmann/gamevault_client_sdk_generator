@@ -3292,21 +3292,21 @@
                         "description": "URLs of externally hosted screenshots of the game",
                         "type": "array",
                         "items": {
-                            "type": "array"
+                            "type": "string"
                         }
                     },
                     "url_trailers": {
                         "description": "URLs of externally hosted trailer videos of the game",
                         "type": "array",
                         "items": {
-                            "type": "array"
+                            "type": "string"
                         }
                     },
                     "url_gameplays": {
                         "description": "URLs of externally hosted gameplay videos of the game",
                         "type": "array",
                         "items": {
-                            "type": "array"
+                            "type": "string"
                         }
                     },
                     "url_websites": {
@@ -3314,7 +3314,7 @@
                         "example": "https://www.escapefromtarkov.com/",
                         "type": "array",
                         "items": {
-                            "type": "array"
+                            "type": "string"
                         }
                     },
                     "publishers": {
