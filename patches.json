@@ -23,5 +23,9 @@
     },
     "sdk/lib/model/health.dart": {
         "uptime: num.parse('${json[r'uptime']}'),": "uptime: json[r'uptime'] != null ? num.parse('${json[r'uptime']}') : null,"
+    },
+    "sdk/lib/model/game_metadata.dart": {
+        "providerPriority: num.parse('${json[r'provider_priority']}'),": "providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provider_priority']}') : null,",
+        "rating: num.parse('${json[r'rating']}'),": "rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,"
     }
 }
