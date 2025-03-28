@@ -2741,8 +2741,7 @@
                     "size",
                     "early_access",
                     "download_count",
-                    "type",
-                    "bookmarked_users"
+                    "type"
                 ]
             },
             "Progress": {
