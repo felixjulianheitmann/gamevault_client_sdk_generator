@@ -29,6 +29,14 @@ jobs:
           # Check if there are any changes in the sdk submodule
           git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
 
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.CICD_APP_CLIENT_ID }}
+          private-key: ${{ secrets.CLAVIS_CICD_PRIV_KEY }}
+          owner: ${{ github.repository_owner }}
+
       - name: Configure git
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
         working-directory: sdk
@@ -44,7 +52,7 @@ jobs:
         uses: ad-m/github-push-action@v0.8.0
         with:
           ssh: true
-          github_token: ${{ secrets.SDK_DEPLOY_KEY }}
+          github_token: ${{ steps.generate-token.outputs.token }}
           directory: sdk
           branch: main
           repository: felixjulianheitmann/gamevault_client_sdk
