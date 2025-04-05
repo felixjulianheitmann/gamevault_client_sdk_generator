@@ -40,4 +40,4 @@ jobs:
           cd sdk
           git add .
           git commit -m "Auto-regenerated SDK"
-          git push origin main
+          git push origin auto-generated-updates
