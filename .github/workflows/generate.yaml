@@ -36,5 +36,6 @@ jobs:
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
           cd sdk
           git add .
+          git checkout -b auto-generated-updates || "echo Branch 'auto-generated-updates' already exists"
           git commit -m "Auto-regenerated SDK"
-          git push origin auto-generated-updates
+          git push --set-upstream origin auto-generated-updates
