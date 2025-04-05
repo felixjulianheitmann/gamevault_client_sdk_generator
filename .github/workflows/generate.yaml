@@ -29,6 +29,10 @@ jobs:
           lfs: true
           persist-credentials: true
 
+      - name: switch to main on submodule
+        working-directory: sdk
+        run: git switch main
+
       - name: Run generator.sh
         run: ./generator.sh
 
@@ -40,27 +44,10 @@ jobs:
 
       - name: Commit and push changes
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
+        working-directory: sdk
         run: |
           # Navigate into the sdk submodule and commit the changes
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-          cd sdk
           git commit -a -m "Auto-generated SDK"
           git push origin main
-
-
-      # - name: Push changes
-      #   if: success() && (steps.check-for-changes.outputs.changed == 'true')
-      #   uses: ad-m/github-push-action@v0.8.0
-      #   with:
-      #     github_token: ${{ steps.generate-token.outputs.token }}
-      #     directory: sdk
-      #     branch: main
-      #     repository: felixjulianheitmann/gamevault_client_sdk
-
-      - name: update submodule
-        if: success() && (steps.check-for-changes.outputs.changed == 'true')
-        run: |
-          git add sdk
-          git commit -m "updated submodule"
-          git push
