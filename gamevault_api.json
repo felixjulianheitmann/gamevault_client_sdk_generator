@@ -2951,7 +2951,6 @@
                     "entity_version",
                     "username",
                     "socket_secret",
-                    "first_name",
                     "activated",
                     "role",
                     "bookmarked_games"
