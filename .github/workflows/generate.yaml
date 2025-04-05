@@ -5,31 +5,36 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   run-generator:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: true
-        lfs: true
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: true
 
-    - name: Run generator.sh
-      run: ./generator.sh
+      - name: Run generator.sh
+        run: ./generator.sh
 
-    - name: Check for changes in sdk submodule
-      id: check-for-changes
-      run: |
-        # Check if there are any changes in the sdk submodule
-        git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
-      
-    - name: Commit and push changes to sdk submodule
-      if: success() && (steps.check-for-changes.outputs.changed == 'true')
-      run: |
-        # Navigate into the sdk submodule and commit the changes
-        cd sdk
-        git add .
-        git commit -m "Auto-regenerated SDK"
-        git push origin main
+      - name: Check for changes in sdk submodule
+        id: check-for-changes
+        run: |
+          # Check if there are any changes in the sdk submodule
+          git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push changes to sdk submodule
+        if: success() && (steps.check-for-changes.outputs.changed == 'true')
+        run: |
+          # Navigate into the sdk submodule and commit the changes
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          cd sdk
+          git add .
+          git commit -m "Auto-regenerated SDK"
+          git push origin main
