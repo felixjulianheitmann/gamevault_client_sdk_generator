@@ -47,7 +47,7 @@ jobs:
           github_token: ${{ secrets.SDK_DEPLOY_KEY }}
           directory: sdk
           branch: main
-          repository: https://github.com/felixjulianheitmann/gamevault_client_sdk
+          repository: felixjulianheitmann/gamevault_client_sdk
 
       - name: update submodule
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
