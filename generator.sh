@@ -2,9 +2,7 @@ rm -r sdk/*
 rm -r sdk/.dart_tool
 rm -r sdk/.openapi-generator
 
-RESPONSE=$(curl -X POST \
-    -H "content-type:application/json" \
-    -d "{
+echo "{
         \"spec\": $(cat gamevault_api.json),
         \"options\":{
             \"pubName\": \"gamevault_client_sdk\",
@@ -12,9 +10,14 @@ RESPONSE=$(curl -X POST \
             \"pubHomepage\": \"https://github.com/felixjulianheitmann/gamevault_client_sdk.git\",
             \"pubDescription\": \"Just the auto-generated client sdk for the gamevault API\"
         }
-    }" \
+    }" > request_body.json
+
+RESPONSE=$(curl -X POST \
+    -H "content-type:application/json" \
+    -d @request_body.json  \
     https://api.openapi-generator.tech/api/gen/clients/dart)
 
+rm request_body.json
 cp gamevault_api.json sdk/spec.json
 
 CODE=$(echo $RESPONSE | jq -r '.code')
