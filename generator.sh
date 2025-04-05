@@ -4,18 +4,18 @@ rm -r sdk/.openapi-generator
 
 RESPONSE=$(curl -X POST \
     -H "content-type:application/json" \
-    -d '{
-        "openAPIUrl": "https://raw.githubusercontent.com/felixjulianheitmann/gamevault_client_sdk_generator/refs/heads/main/gamevault_api.json",
-        "options":{
-            "pubName": "gamevault_client_sdk",
-            "pubVersion": "0.0.2",
-            "pubHomepage": "https://github.com/felixjulianheitmann/gamevault_client_sdk.git",
-            "pubDescription": "Just the auto-generated client sdk for the gamevault API"
+    -d "{
+        \"spec\": $(cat gamevault_api.json),
+        \"options\":{
+            \"pubName\": \"gamevault_client_sdk\",
+            \"pubVersion\": \"0.0.2\",
+            \"pubHomepage\": \"https://github.com/felixjulianheitmann/gamevault_client_sdk.git\",
+            \"pubDescription\": \"Just the auto-generated client sdk for the gamevault API\"
         }
-    }' \
+    }" \
     https://api.openapi-generator.tech/api/gen/clients/dart)
 
-wget -O sdk/spec.json https://raw.githubusercontent.com/felixjulianheitmann/gamevault_client_sdk_generator/refs/heads/main/gamevault_api.json
+cp gamevault_api.json sdk/spec.json
 
 CODE=$(echo $RESPONSE | jq -r '.code')
 
