@@ -38,13 +38,13 @@ jobs:
           # Check if there are any changes in the sdk submodule
           git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Configure git
+      - name: Commit and push changes
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
-        working-directory: sdk
         run: |
           # Navigate into the sdk submodule and commit the changes
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          cd sdk
           git commit -a -m "Auto-generated SDK"
           git push origin main
 
@@ -60,7 +60,6 @@ jobs:
 
       - name: update submodule
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
-        working-directory: 
         run: |
           git add sdk
           git commit -m "updated submodule"
