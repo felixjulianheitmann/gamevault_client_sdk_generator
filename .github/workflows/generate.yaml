@@ -23,7 +23,7 @@ jobs:
       id: check-for-changes
       run: |
         # Check if there are any changes in the sdk submodule
-        git diff --exit-code sdk && echo "changed=true" >> "$GITHUB_OUTPUT"
+        git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
       
     - name: Commit and push changes to sdk submodule
       if: success() && (steps.check-for-changes.outputs.changed == 'true')
