@@ -40,14 +40,17 @@ jobs:
 
 
       - name: Push changes
+        if: success() && (steps.check-for-changes.outputs.changed == 'true')
         uses: ad-m/github-push-action@v0.8.0
         with:
           ssh: true
           github_token: ${{ secrets.SDK_DEPLOY_KEY }}
           directory: sdk
           branch: main
+          repository: https://github.com/felixjulianheitmann/gamevault_client_sdk
 
       - name: update submodule
+        if: success() && (steps.check-for-changes.outputs.changed == 'true')
         working-directory: 
         run: |
           git add sdk
