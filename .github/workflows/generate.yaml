@@ -29,22 +29,27 @@ jobs:
           # Check if there are any changes in the sdk submodule
           git diff --exit-code sdk || echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and push changes to sdk submodule
+      - name: Configure git
         if: success() && (steps.check-for-changes.outputs.changed == 'true')
+        working-directory: sdk
         run: |
           # Navigate into the sdk submodule and commit the changes
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-          cd sdk
-          
-          git remote set-url origin git@github.com:${{ github.repository }}.git
-          echo "${{ secrets.SDK_DEPLOY_KEY }}" > ~/deploy-key
-          chmod 600 ~/deploy-key
-          mkdir ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --add --global core.sshCommand 'ssh -i ~/deploy-key'
+          git commit -a -m "Auto-generated SDK"
 
-          git add .
-          git checkout -b auto-generated-updates || "echo Branch 'auto-generated-updates' already exists"
-          git commit -m "Auto-regenerated SDK"
-          git push --set-upstream origin auto-generated-updates
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          ssh: true
+          github_token: ${{ secrets.SDK_DEPLOY_KEY }}
+          directory: sdk
+          branch: main
+
+      - name: update submodule
+        working-directory: 
+        run: |
+          git add sdk
+          git commit -m "updated submodule"
+          git push
