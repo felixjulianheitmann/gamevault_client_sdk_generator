@@ -18,6 +18,7 @@ jobs:
         with:
           submodules: true
           lfs: true
+          persist-credentials: true
 
       - name: Run generator.sh
         run: ./generator.sh
