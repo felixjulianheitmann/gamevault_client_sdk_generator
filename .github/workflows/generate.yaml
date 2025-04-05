@@ -1,0 +1,35 @@
+name: Run Generator Script on Push to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-generator:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+        lfs: true
+
+    - name: Run generator.sh
+      run: ./generator.sh
+
+    - name: Check for changes in sdk submodule
+      id: check-for-changes
+      run: |
+        # Check if there are any changes in the sdk submodule
+        git diff --exit-code sdk || echo "Changes detected in sdk submodule"
+      
+    - name: Commit and push changes to sdk submodule
+      if: success() && (steps.check-for-changes.outputs.changed == 'true')
+      run: |
+        # Navigate into the sdk submodule and commit the changes
+        cd sdk
+        git add .
+        git commit -m "Auto-regenerated SDK"
+        git push origin main
