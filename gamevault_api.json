@@ -2090,8 +2090,8 @@
                 ]
             },
             "Buffer": {
-                "type": "object",
-                "properties": {}
+                "type": "string",
+                "format": "binary"
             },
             "Media": {
                 "type": "object",
