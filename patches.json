@@ -19,7 +19,9 @@
         "case '0': return UpdateUserDtoRoleEnum.n0;": "case 0: return UpdateUserDtoRoleEnum.n0;",
         "case '1': return UpdateUserDtoRoleEnum.n1;": "case 1: return UpdateUserDtoRoleEnum.n1;",
         "case '2': return UpdateUserDtoRoleEnum.n2;": "case 2: return UpdateUserDtoRoleEnum.n2;",
-        "case '3': return UpdateUserDtoRoleEnum.n3;": "case 3: return UpdateUserDtoRoleEnum.n3;"
+        "case '3': return UpdateUserDtoRoleEnum.n3;": "case 3: return UpdateUserDtoRoleEnum.n3;",
+        "avatarId: num.parse('${json[r'avatar_id']}'),": "avatarId: json[r'avatar_id'] != null ? num.parse('${json[r'avatar_id']}') : null,",
+        "backgroundId: num.parse('${json[r'background_id']}'),": "backgroundId: json[r'background_id'] != null ? num.parse('${json[r'background_id']}') : null,"
     },
     "sdk/lib/model/health.dart": {
         "uptime: num.parse('${json[r'uptime']}'),": "uptime: json[r'uptime'] != null ? num.parse('${json[r'uptime']}') : null,"
@@ -27,6 +29,12 @@
     "sdk/lib/model/game_metadata.dart": {
         "providerPriority: num.parse('${json[r'provider_priority']}'),": "providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provider_priority']}') : null,",
         "rating: num.parse('${json[r'rating']}'),": "rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,",
-        "averagePlaytime: num.parse('${json[r'average_playtime']}'),": "averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,"
+        "averagePlaytime: num.parse('${json[r'average_playtime']}'),": "averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,",
+        "ageRating: num.parse('${json[r'age_rating']}'),": "ageRating: json[r'age_rating'] != null ? num.parse('${json[r'age_rating']}') : null,"
+    },
+    "sdk/lib/model/update_game_user_metadata_dto.dart": {
+        "ageRating: num.parse('${json[r'age_rating']}'),": "ageRating: json[r'age_rating'] != null ? num.parse('${json[r'age_rating']}') : null,",
+        "averagePlaytime: num.parse('${json[r'average_playtime']}'),": "averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,",
+        "rating: num.parse('${json[r'rating']}'),": "rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,"
     }
 }
