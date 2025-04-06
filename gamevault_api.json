@@ -2950,8 +2950,7 @@
                     "entity_version",
                     "username",
                     "activated",
-                    "role",
-                    "bookmarked_games"
+                    "role"
                 ]
             },
             "UpdateUserDto": {
