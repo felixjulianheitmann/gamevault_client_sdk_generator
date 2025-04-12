@@ -2214,8 +2214,7 @@
                     "entity_version",
                     "provider_slug",
                     "provider_data_id",
-                    "name",
-                    "games"
+                    "name"
                 ]
             },
             "DeveloperMetadata": {
