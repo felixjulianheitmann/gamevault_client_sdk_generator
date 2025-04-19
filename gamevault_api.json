@@ -2731,8 +2731,7 @@
                 "required": [
                     "id",
                     "created_at",
-                    "entity_version",
-                    "type"
+                    "entity_version"
                 ]
             },
             "Progress": {
