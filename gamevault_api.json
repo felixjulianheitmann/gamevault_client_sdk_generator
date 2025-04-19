@@ -2732,7 +2732,6 @@
                     "id",
                     "created_at",
                     "entity_version",
-                    "early_access",
                     "download_count",
                     "type"
                 ]
