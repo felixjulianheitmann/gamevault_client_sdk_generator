@@ -32,6 +32,9 @@
         "averagePlaytime: num.parse('${json[r'average_playtime']}'),": "averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,",
         "ageRating: num.parse('${json[r'age_rating']}'),": "ageRating: num.parse('${json[r'age_rating'] ?? 0}'),"
     },
+    "sdk/lib/model/gamevault_game.dart": {
+        "downloadCount: num.parse('${json[r'download_count']}'),": "downloadCount: num.parse('${json[r'download_count'] ?? 0}'),"
+    },
     "sdk/lib/model/update_game_user_metadata_dto.dart": {
         "ageRating: num.parse('${json[r'age_rating']}'),": "ageRating: num.parse('${json[r'age_rating'] ?? 0}'),",
         "averagePlaytime: num.parse('${json[r'average_playtime']}'),": "averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,",
